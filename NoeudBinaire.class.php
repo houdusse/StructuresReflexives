@@ -7,7 +7,7 @@ namespace Algo\StructureDonnees\StructureReflexive;
 	private $gauche;
 	private $droit;
 
-	public function __construct($valeur, Noeud $gauche = null, Noeud $droit = null) {
+	public function __construct($valeur, NoeudBinaire $gauche = null, NoeudBinaire $droit = null) {
 		$this->valeur = $valeur;
 		$this->gauche = $gauche;
 		$this->droit = $droit;
@@ -30,11 +30,11 @@ namespace Algo\StructureDonnees\StructureReflexive;
 		$this->valeur = $valeur;
 	}
 
-	public function setGauche(Noeud $gauche) {
+	public function setGauche(NoeudBinaire $gauche) {
 		$this->gauche = $gauche;
 	}
 
-	public function setDroit(Noeud droit) {
+	public function setDroit(NoeudBinaire $droit) {
 		$this->droit = $droit;
 	}
 
@@ -42,16 +42,39 @@ namespace Algo\StructureDonnees\StructureReflexive;
 		return ($this->gauche === null AND $this->droit === null);
 	}
 
-	public function parcourPrefixe(NoeudBinaire $noeud) {
-		echo $this->getValeur();
-		if ($this->getGauche() !== null ) {
-			parcourPrefixe($this->getGauche());
+	public static function parcourPrefixe(NoeudBinaire $racine) {
+		echo $racine->getValeur() .'<br>';
+		if ($racine->getGauche() !== null ) {
+			self::parcourPrefixe($racine->getGauche());
 		}
 
-		if ($this->getDroit() !== null) {
-			parcourPrefixe($this->getDroit());
+		if ($racine->getDroit() !== null) {
+			self::parcourPrefixe($racine->getDroit());
 		}
 	}
+
+	public static function parcourInfixe(NoeudBinaire $racine) {
+		if ($racine->getGauche() !== null ) {
+			self::parcourinfixe($racine->getGauche());
+		}
+		echo $racine->getValeur() .'<br>';
+
+		if ($racine->getDroit() !== null) {
+			self::parcourInfixe($racine->getDroit());
+		}
+	}
+
+		public static function parcourPostfixe(NoeudBinaire $racine) {
+		if ($racine->getGauche() !== null ) {
+			self::parcourPostfixe($racine->getGauche());
+		}
+
+		if ($racine->getDroit() !== null) {
+			self::parcourPostfixe($racine->getDroit());
+		}
+		echo $racine->getValeur() .'<br>';
+	}
+
 
 
 

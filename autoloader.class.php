@@ -1,5 +1,5 @@
 <?php
-namespace Algo\StructureDonnees\StructureLineaire;
+namespace Algo\StructureDonnees\StructureReflexive;
 
 class MountLoader {
 
