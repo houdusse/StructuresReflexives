@@ -1,7 +1,7 @@
 <?php
 namespace Algo\StructureDonnees\StructureReflexive;
 
- class Noeud {
+ class NoeudBinaire {
  
 	private $valeur;
 	private $gauche;
@@ -40,6 +40,17 @@ namespace Algo\StructureDonnees\StructureReflexive;
 
 	public function isFeuille() {
 		return ($this->gauche === null AND $this->droit === null);
+	}
+
+	public function parcourPrefixe(NoeudBinaire $noeud) {
+		echo $this->getValeur();
+		if ($this->getGauche() !== null ) {
+			parcourPrefixe($this->getGauche());
+		}
+
+		if ($this->getDroit() !== null) {
+			parcourPrefixe($this->getDroit());
+		}
 	}
 
 
